@@ -6,12 +6,21 @@
 */
 package bubblesort
 
+/*Sort сортировка пузырьком
+Для оптимизации добавлен флаг по которому завершаем сортировку,
+если на итерации не было перестановок, что автоматически говорит о том что массив отсортирован.
+*/
 func Sort(a []int) {
 	for i := range a {
+		isSorted := true
 		for j := range len(a) - 1 - i {
 			if a[j] > a[j+1] {
 				a[j], a[j+1] = a[j+1], a[j]
+				isSorted = false
 			}
+		}
+		if isSorted {
+			return
 		}
 	}
 }
