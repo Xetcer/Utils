@@ -7,7 +7,7 @@
 package bubblesort
 
 func Sort(a []int) {
-	for i := range len(a) - 1 {
+	for i := range a {
 		for j := range len(a) - 1 - i {
 			if a[j] > a[j+1] {
 				a[j], a[j+1] = a[j+1], a[j]
