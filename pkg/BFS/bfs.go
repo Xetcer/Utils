@@ -19,16 +19,16 @@ func personIsSeller(name string) bool {
 // иначе "", false
 func FindSellerBFS(persons Persons, firstNode string) (string, bool) {
 	// Создаем очередь
-	LIFO := list.New()
+	FIFO := list.New()
 	verifiedPersons := make(map[string]int)
 	pushNodesToLifo := func(names []string) {
 		for _, name := range names {
-			LIFO.PushBack(name)
+			FIFO.PushBack(name)
 		}
 	}
 	pushNodesToLifo(persons[firstNode])
 
-	for e := LIFO.Front(); e != nil; e = e.Next() {
+	for e := FIFO.Front(); e != nil; e = e.Next() {
 		if name, ok := e.Value.(string); ok {
 			if verifiedPersons[name] == 0 { // Если еще не проверен
 				if personIsSeller(name) {
