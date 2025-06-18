@@ -14,7 +14,7 @@ type Costs map[string]int
 type Processed map[string]bool
 type Parents map[string]string
 
-func Deikstra(graph Graph, start string, end string) ([]string, int) {
+func Deikstra(graph Graph, start, end string) ([]string, int) {
 	costs := make(Costs)
 	parents := make(Parents)
 	processed := make(Processed)
