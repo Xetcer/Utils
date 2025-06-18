@@ -68,6 +68,49 @@ func TestDeikstra(t *testing.T) {
 			expectedPath: []string{"P", "Q"},
 			expectedCost: 1,
 		},
+		{
+			name: "Упражнение 9.1 A",
+			graph: Graph{
+				"start": Node{"1": 5, "2": 2},
+				"1":     Node{"3": 4, "4": 2},
+				"2":     Node{"1": 8, "4": 7},
+				"3":     Node{"end": 3, "4": 6},
+				"4":     Node{"end": 1},
+				"end":   Node{},
+			},
+			start:        "start",
+			end:          "end",
+			expectedPath: []string{"start", "1", "4", "end"},
+			expectedCost: 8,
+		},
+		{
+			name: "Упражнение 9.1 B",
+			graph: Graph{
+				"start": Node{"1": 10},
+				"1":     Node{"3": 20},
+				"2":     Node{"1": 1},
+				"3":     Node{"2": 1, "end": 30},
+				"end":   Node{},
+			},
+			start:        "start",
+			end:          "end",
+			expectedPath: []string{"start", "1", "3", "end"},
+			expectedCost: 60,
+		},
+		{
+			name: "Упражнение 9.1 C (без отрицательного пути))",
+			graph: Graph{
+				"start": Node{"1": 2, "2": 2},
+				"1":     Node{"2": 2},
+				"2":     Node{"3": 2, "end": 2},
+				"3":     Node{"1": 1, "end": 2},
+				"end":   Node{},
+			},
+			start:        "start",
+			end:          "end",
+			expectedPath: []string{"start", "2", "end"},
+			expectedCost: 4,
+		},
 	}
 
 	for _, tc := range testCases {
